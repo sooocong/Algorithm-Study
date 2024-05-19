@@ -1,13 +1,16 @@
 from collections import deque
-dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1] # 상하좌우
+
+dx, dy = [-1, 1, 0, 0], [0, 0, -1, 1]
 
 t = int(input())
 for ___ in range(t):
     m, n, k = map(int,input().split())
     arr = [[0]*m for _ in range(n)]
+    
     for i in range(k):
         y, x = map(int,input().split())
         arr[x][y] = 1
+        
     check = [[0]*m for _ in range(n)]
     val = 1
 
@@ -17,6 +20,7 @@ for ___ in range(t):
             if check[i][j] == 0 and arr[i][j] == 1:
                 check[i][j] = val
                 q.append((i,j))
+                
                 while q:
                     x, y = q.popleft()
                     for k in range(4):
