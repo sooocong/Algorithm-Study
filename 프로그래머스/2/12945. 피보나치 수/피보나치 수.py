@@ -1,7 +1,13 @@
 def solution(n):
-    a, b = 0, 1
+    fibo = [0, 1]
     
-    for i in range(n - 1):
-        a, b = b, a + b
-
-    return b % 1234567
+    if n == 1:
+        return 0
+    elif n == 2:
+        return 1
+        
+    for i in range(2, n + 1):
+        fibo.append(fibo[i - 2] + fibo[i - 1])
+        
+    ans = fibo[n]
+    return ans % 1234567
