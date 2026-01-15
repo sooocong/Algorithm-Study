@@ -1,8 +1,8 @@
-def solution(n):
-    target = bin(n).count('1') # n을 2진수 문자열로 변환 후 1 개수 카운트
-    next_num = n + 1
+from collections import Counter
 
-    while True:
-        if bin(next_num).count('1') == target:
-            return next_num
-        next_num += 1
+def solution(n):
+    new = n
+    while 1:
+        new += 1
+        if Counter(bin(new)[2:])['1'] == Counter(bin(n)[2:])['1']:
+            return new
