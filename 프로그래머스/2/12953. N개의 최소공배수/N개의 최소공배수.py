@@ -1,3 +1,5 @@
+from math import gcd
+
 def solution(arr):
     answer = arr[0]
     
@@ -6,10 +8,10 @@ def solution(arr):
     return answer
     
 # 최대공약수
-def gcd(a, b):
-    while b != 0:
-        a, b = b, a % b
-    return a
+# def gcd(a, b):
+#     while b != 0:
+#         a, b = b, a % b
+#     return a
     
 # 최소공배수
 def lcm(a, b):
