@@ -1,15 +1,19 @@
-from collections import Counter
-
 def solution(want, number, discount):
-    answer = 0
-    # 빈 딕셔너리 배열 생성
-    dic = {}
+    ans = 0
+    want_dict = {}
     
+    # want, number -> 하나의 딕셔너리 쌍으로 만들기
     for i in range(len(want)):
-        dic[want[i]] = number[i]
+        want_dict[want[i]] = number[i]
 
-    for i in range(len(discount)-9):
-        if dic == Counter(discount[i:i+10]): 
-            answer += 1
-
-    return answer
+    for i in range(len(discount) - 9):
+        dis_dict = {}
+        for j in range(i, i + 10):
+            if discount[j] not in dis_dict:
+                dis_dict[discount[j]] = 1
+            else:
+                dis_dict[discount[j]] += 1
+                
+        if want_dict == dis_dict:
+            ans += 1
+    return ans
