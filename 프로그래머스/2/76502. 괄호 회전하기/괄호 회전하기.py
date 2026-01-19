@@ -1,22 +1,29 @@
+from collections import deque
+
 def solution(s):
-    answer = 0
-    pair = {')': '(', ']': '[', '}': '{'}
-    
+    ans = 0
+    s = deque(s)
+            
     for i in range(len(s)):
         stack = []
-        valid = True
-        
-        for ch in s:
-            if ch in '([{':
-                stack.append(ch)
-            else:
-                if not stack or stack[-1] != pair[ch]:
-                    valid = False
-                    break
+        for j in range(len(s)):
+            if j == 0:
+                stack.append(s[0])
+            elif len(stack) == 0:
+                stack.append(s[j])
+            elif s[j] == ')' and stack[-1] == '(':
                 stack.pop()
-        if valid and not stack:
-            answer += 1
-        
-        s = s[1:] + s[0]
-        
-    return answer
+
+            elif s[j] == '}' and stack[-1] == '{':
+                stack.pop()
+
+            elif s[j] == ']' and stack[-1] == '[':
+                stack.pop()
+            else:
+                stack.append(s[j])
+            
+        if len(stack) == 0:
+                ans += 1
+        s.append(s.popleft())
+
+    return ans
