@@ -1,13 +1,12 @@
 def solution(arr1, arr2):
-    rows = len(arr1)
-    cols = len(arr2[0])
-    mid = len(arr2)
+    answer = [[] for _ in range(len(arr1))]
     
-    answer = [[0] * cols for _ in range(rows)]
+    # 행렬곱
+    for i in range(len(arr1)):
+        for j in range(len(arr2[0])):
+            cnt = 0
+            for k in range(len(arr1[0])):
+                cnt += arr1[i][k] * arr2[k][j]
+            answer[i].append(cnt)
 
-    for i in range(rows):
-        for j in range(cols):
-            for k in range(mid):
-                answer[i][j] += arr1[i][k] * arr2[k][j]
-    
     return answer
