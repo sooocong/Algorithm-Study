@@ -1,14 +1,15 @@
 def solution(clothes):
-    answer = 1
-    closet = {}
-    
-    for Kind, Type in clothes:
-        if Type not in closet:
-            closet[Type] = 1
+    clothes_dict = {}
+    ans = 1
+    for clo in clothes:
+        if clo[1] not in clothes_dict:
+            clothes_dict[clo[1]] = 1
         else:
-            closet[Type] += 1
+            clothes_dict[clo[1]] += 1
             
-    for key, value in closet.items():
-        answer *= (value + 1)
+    clothes_dict = list(clothes_dict.values())
     
-    return answer - 1
+    for i in range(len(clothes_dict)):
+        ans *= (clothes_dict[i] + 1)
+        
+    return ans - 1
