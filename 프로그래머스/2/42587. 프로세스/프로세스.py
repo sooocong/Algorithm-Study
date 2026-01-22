@@ -6,14 +6,12 @@ def solution(priorities, location):
     
     while queue:
         process = queue.popleft()
+        
         if queue and any(process[1] < q[1] for q in queue):
             queue.append(process)
         else:
             answer.append(process)
-
-    cnt = 1
-    for a in answer:
-        if location == a[0]:
-            return cnt
-        else:
-            cnt += 1
+    
+    for i in answer:
+        if i[0] == location:
+            return answer.index(i) + 1
