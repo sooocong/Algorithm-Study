@@ -1,27 +1,29 @@
-input = __import__('sys').stdin.readline
+import sys
+input = sys.stdin.readline
 
-N = int(input())
-bar = []
+n = int(input())
+stack = []
 
-for i in range(N):
-    a = list(input().split())
+for i in range(n):
+    a = input().strip()
+    cmd = a.split()
 
-    if a[0] == 'push':
-        bar.append(a[1])
-    if a[0] == 'pop':
-        if len(bar) == 0:
+    if cmd[0] == 'push':
+        stack.append(cmd[1])
+    elif cmd[0] == 'pop':
+        if len(stack) == 0:
             print(-1)
         else:
-            print(bar.pop())
-    if a[0] == 'size':
-        print(len(bar))
-    if a[0] == 'empty':
-        if len(bar) == 0:
+            print(stack.pop())
+    elif cmd[0] == 'size':
+        print(len(stack))
+    elif cmd[0] == 'empty':
+        if len(stack) == 0:
             print(1)
         else:
             print(0)
-    if a[0] == 'top':
-        if len(bar) == 0 :
+    elif cmd[0] == 'top':
+        if len(stack) == 0:
             print(-1)
         else:
-            print(bar[-1])
+            print(stack[-1])
