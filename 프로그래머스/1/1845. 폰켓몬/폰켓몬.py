@@ -1,7 +1,3 @@
+from collections import Counter
 def solution(nums):
-    pick = len(nums) // 2 # 뽑을 폰켓몬 수
-    cnt = len(set(nums))
-    
-    answer = min(pick, cnt)
-
-    return answer
+    return min(len(Counter(nums)), len(nums) // 2)
