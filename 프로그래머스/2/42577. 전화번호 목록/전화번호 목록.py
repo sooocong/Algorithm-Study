@@ -1,7 +1,9 @@
 def solution(phone_book):
     phone_book.sort()
+    is_flag = True
     
     for i in range(len(phone_book) - 1):
-        if phone_book[i + 1].startswith(phone_book[i]):
-            return False
-    return True
+        if phone_book[i] == phone_book[i + 1][:len(phone_book[i])]:
+            is_flag = False
+    
+    return is_flag
