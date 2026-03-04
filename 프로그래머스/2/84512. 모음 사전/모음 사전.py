@@ -1,15 +1,14 @@
+from itertools import product
+
 def solution(word):
-    answer = 0
+    result = 0
     moeum = ['A', 'E', 'I', 'O', 'U']
-    order = []
+    moeum_list = []
     
-    def dfs(cur):
-        if len(cur) > 5:
-            return
-        if cur != "": # 빈 문자열
-            order.append(cur)
-        for v in moeum:
-            dfs(cur + v)
+    for i in range(len(moeum)):
+        mo = list(product(moeum, repeat = i + 1))
+        for m in mo:
+            moeum_list.append(''.join(m))
+    moeum_list.sort()
     
-    dfs("")
-    return order.index(word) + 1
+    return moeum_list.index(word) + 1
