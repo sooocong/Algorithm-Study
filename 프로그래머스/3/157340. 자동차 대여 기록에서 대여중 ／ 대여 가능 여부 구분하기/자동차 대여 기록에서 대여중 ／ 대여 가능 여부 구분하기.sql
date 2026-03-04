@@ -1,6 +1,13 @@
 SELECT
     CAR_ID,
-    MAX(IF(START_DATE <= '2022-10-16' AND END_DATE >= '2022-10-16', '대여중', '대여 가능')) AS AVAILABILITY
+    IF(
+        MAX(CASE
+            WHEN '2022-10-16' BETWEEN START_DATE AND END_DATE THEN 1
+            ELSE 0
+        END) >= 1,
+        '대여중',
+        '대여 가능'
+    ) AS AVAILABILITY
 FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
 GROUP BY 1
 ORDER BY 1 DESC;
