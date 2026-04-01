@@ -8,7 +8,6 @@ def solution(number, k):
             stack.pop()
             k -= 1
         stack.append(n)
-            
     if t == 0:
         for _ in range(k):
             del stack[-1]
