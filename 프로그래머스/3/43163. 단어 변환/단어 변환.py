@@ -7,6 +7,7 @@ def solution(begin, target, words):
         
     def can_change(a, b):
         diff = 0
+        
         for i in range(len(a)):
             if a[i] != b[i]:
                 diff += 1
@@ -14,7 +15,6 @@ def solution(begin, target, words):
         
     while q:
         current, step = q.popleft()
-        
         if current == target:
             return step
         
