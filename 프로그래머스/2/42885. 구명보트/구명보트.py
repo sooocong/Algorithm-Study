@@ -1,19 +1,15 @@
-from collections import deque
-
 def solution(people, limit):
-    boat = 0
-    people = deque(sorted(people))
+    people.sort()
+
+    left, boat = 0, 0
+    right = len(people) - 1
     
-    while len(people) != 0:
-        if len(people) == 1:
-            boat += 1
-            break
-        elif people[0] + people[-1] > limit:
-            people.pop()
-            boat += 1
-        else:
-            people.popleft()
-            people.pop()
-            boat += 1
-    
+    while left <= right:
+        
+        if people[left] + people[right] <= limit:
+            left += 1
+            
+        right -= 1
+        boat += 1
+        
     return boat
